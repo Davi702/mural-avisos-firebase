@@ -1,0 +1,38 @@
+{
+  "rules": {
+
+    // ── /posts ───────────────────────────────────────────────────────────
+    // Qualquer usuário logado pode LER os avisos.
+    // Apenas admin pode ESCREVER (criar, editar, deletar).
+    "posts": {
+      ".read":  "auth != null",
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    },
+
+    // ── /users ───────────────────────────────────────────────────────────
+    // Cada usuário pode ler e editar o próprio perfil.
+    // Admin pode ler todos os perfis.
+    // O campo "role" é protegido: ninguém pode alterar o próprio cargo.
+    "users": {
+      "$uid": {
+        ".read":  "auth.uid === $uid || root.child('users/' + auth.uid + '/role').val() === 'admin'",
+        ".write": "auth.uid === $uid",
+
+        "role": {
+          // Se não existir dado antigo (nova conta), permite.
+          // Se já existir, o novo cargo enviado tem que ser idêntico ao antigo (impede alteração).
+          ".validate": "!data.exists() || data.val() === newData.val()"
+        }
+      }
+    },
+
+    // ── /admin-data ──────────────────────────────────────────────────────
+    // Totalmente bloqueado para alunos (role = user).
+    // Guarda: diretoria, lista de bloqueados, configurações do curso.
+    "admin-data": {
+      ".read":  "root.child('users/' + auth.uid + '/role').val() === 'admin'",
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    }
+
+  }
+}

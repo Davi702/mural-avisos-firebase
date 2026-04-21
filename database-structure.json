@@ -1,0 +1,73 @@
+{
+  "posts": {
+    "post_1": {
+      "titulo": "Reunião de Colegiado",
+      "corpo": "Reunião obrigatória para todos os professores na sala 201. Pauta: grade do próximo semestre.",
+      "categoria": "aviso",
+      "autor": "Francisco Vital",
+      "autorId": "0GeBNrMXdiQmZt7NWyWyeAJk55p1",
+      "data": "2025-04-20"
+    },
+    "post_2": {
+      "titulo": "Prazo de Trancamento — ÚLTIMO DIA",
+      "corpo": "Atenção! Hoje é o último dia para solicitar trancamento de disciplinas no portal do aluno.",
+      "categoria": "urgente",
+      "autor": "Francisco Vital",
+      "autorId": "0GeBNrMXdiQmZt7NWyWyeAJk55p1",
+      "data": "2025-04-20"
+    },
+    "post_3": {
+      "titulo": "Semana de Computação 2025",
+      "corpo": "Palestras, hackathon e feira de projetos. Inscrições abertas até 30/04.",
+      "categoria": "evento",
+      "autor": "Francisco Vital",
+      "autorId": "0GeBNrMXdiQmZt7NWyWyeAJk55p1",
+      "data": "2025-04-19"
+    }
+  },
+  "users": {
+    "0GeBNrMXdiQmZt7NWyWyeAJk55p1": {
+      "createdAt": "2026-04-19",
+      "email": "coordenador@unima.com",
+      "name": "Francisco Vital",
+      "role": "admin",
+      "telefone": "",
+      "turma": "Coordenador"
+    },
+    "hEBVECd8pdZcyzXfuvmQz1BJtii1": {
+      "createdAt": "2026-04-21",
+      "email": "aluno@unima.com",
+      "name": "Luiz Arthur",
+      "role": "user",
+      "telefone": "",
+      "turma": "CC - 5 PERIODO"
+    },
+    "daniijhpA5csKcyriI7QeAeA5Uu2": {
+      "createdAt": "2026-04-21",
+      "email": "professor@unima.com",
+      "name": "Marcos Vinícius",
+      "role": "admin",
+      "telefone": "",
+      "turma": "Professor"
+    }
+  },
+  "admin-data": {
+    "diretoria": {
+      "0GeBNrMXdiQmZt7NWyWyeAJk55p1": {
+        "nome": "Francisco Vital",
+        "cargo": "Coordenador do Curso",
+        "desde": "2024-04-19"
+      },
+      "daniijhpA5csKcyriI7QeAeA5Uu2": {
+        "nome": "Marcos Vinícius",
+        "cargo": "Professor",
+        "desde": "2026-04-21"
+      }
+    },
+    "bloqueados": {},
+    "config": {
+      "curso": "Ciências da Computação",
+      "instituicao": "UNIMA"
+    }
+  }
+}

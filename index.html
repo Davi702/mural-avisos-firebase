@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mural de Avisos — RBAC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- ── Tela de login ────────────────────────────────── -->
+    <div id="auth-screen" class="screen active">
+      <div class="auth-container">
+        <div class="auth-card">
+          <div class="auth-logo">
+            <span>📋</span>
+            <h1>Mural de Avisos</h1>
+            <p>Ciências da Computação</p>
+          </div>
+
+          <div class="tabs">
+            <button class="tab active" id="tab-login">Entrar</button>
+            <button class="tab" id="tab-register">Criar conta</button>
+          </div>
+
+          <!-- Formulário de login -->
+          <form id="login-form" class="tab-panel active">
+            <label>E-mail</label>
+            <input type="email" id="login-email" required />
+            <label>Senha</label>
+            <input type="password" id="login-password" required />
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <div id="login-err" class="msg-err hidden"></div>
+          </form>
+
+          <!-- Formulário de cadastro -->
+          <form id="register-form" class="tab-panel">
+            <label>Nome completo</label>
+            <input type="text" id="reg-name" required />
+            <label>E-mail</label>
+            <input type="email" id="reg-email" required />
+            <label>Senha</label>
+            <input type="password" id="reg-password" required />
+            <label>Turma</label>
+            <input type="text" id="reg-turma" placeholder="Ex: CC - 5° Período" />
+            <label>Cargo</label>
+            <select id="reg-role">
+              <option value="user">Aluno — só lê avisos</option>
+              <option value="admin">Diretoria — publica avisos</option>
+            </select>
+            <button type="submit" class="btn btn-primary btn-block">Criar conta</button>
+            <div id="register-err" class="msg-err hidden"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Tela do dashboard ────────────────────────────── -->
+    <div id="dashboard-screen" class="screen">
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="status-dot"></span>
+          <strong>📋 Mural de Avisos</strong>
+        </div>
+        <div class="topbar-right">
+          <span id="topbar-name"></span>
+          <span id="topbar-badge" class="badge"></span>
+          <button id="logout-btn" class="btn btn-ghost btn-sm">Sair</button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside id="sidebar" class="sidebar"></aside>
+        <main id="content" class="content"></main>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+
+</html>
