@@ -156,7 +156,7 @@ function renderMural(el) {
   // onValue: ouve em tempo real — qualquer novo aviso aparece automaticamente
   onValue(ref(db, "posts"), (snap) => {
     const posts = snap.val() || {};
-    const lista = Object.entries(posts).reverse();
+    const lista = Object.entries(posts).sort((a, b) => b[1].data.localeCompare(a[1].data));
 
     const isAdmin = currentUser.role === "admin";
     const catClass = { aviso: "", urgente: " urgente", evento: " evento" };
