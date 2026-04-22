@@ -352,17 +352,17 @@ async function renderBloqueados(el) {
     <div class="card">
       <h3>Bloquear usuário</h3>
       <label>UID ou e-mail</label>
-      <input id="blk-uid" placeholder="uid do usuário" />
+      <input id="blk-uid" placeholder="uid do usuário ou email@unima.com" />
       <label>Motivo</label>
       <input id="blk-motivo" placeholder="Motivo do bloqueio" />
       <button class="btn btn-danger" onclick="bloquear()">Bloquear</button>
     </div>
     <div class="card">
       <h3>${Object.keys(bloqueados).length === 0 ? "Nenhum usuário bloqueado" : "Bloqueados"}</h3>
-      ${Object.entries(bloqueados).map(([uid, b]) => `
+      ${Object.entries(bloqueados).map(([chave, b]) => `
         <div class="blocked-row">
-          <span><strong>${uid}</strong> — ${b.motivo}</span>
-          <button class="btn btn-sm btn-ghost" onclick="desbloquear('${uid}')">Remover</button>
+          <span><strong>${b.uid || chave}</strong> — ${b.motivo}</span>
+          <button class="btn btn-sm btn-ghost" onclick="desbloquear('${chave}')">Remover</button>
         </div>
       `).join("") || ""}
     </div>
@@ -370,13 +370,23 @@ async function renderBloqueados(el) {
 }
 
 window.bloquear = async () => {
-  const uid = document.getElementById("blk-uid").value;
+  const uid = document.getElementById("blk-uid").value.trim();
   const motivo = document.getElementById("blk-motivo").value;
   if (!uid) return;
-  await set(ref(db, `admin-data/bloqueados/${uid}`), {
+
+  // Remove caracteres que o Firebase não aceita em chaves (. @ # $ / [ ])
+  const chave = uid.replace(/[.@#$\/\[\]]/g, "_");
+
+  await set(ref(db, `admin-data/bloqueados/${chave}`), {
+    uid: uid,
     motivo: motivo || "Sem motivo informado",
     data: new Date().toISOString().split("T")[0],
   });
+  renderBloqueados(document.getElementById("content"));
+};
+
+window.desbloquear = async (uid) => {
+  await remove(ref(db, `admin-data/bloqueados/${uid}`));
   renderBloqueados(document.getElementById("content"));
 };
 
