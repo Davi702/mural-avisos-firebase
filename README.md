@@ -12,8 +12,7 @@ O sistema utiliza o Firebase Realtime Database com três nós principais:
 |-----------------|---------------------------|----------|-------|
 | Francisco Vital | coordenador@unima.com     | teste123 | admin |
 | Marcos Vinicius | professor@unima.com       | teste123 | admin |
-| Luiz Arthur     | aluno@unima.com           | teste123 | user  |
-| André Santos    | aluno2@unima.com          | teste123 | user  |
+| Davi Souza      | aluno@unima.com           | teste123 | user  |
 
 > Entre com uma conta **admin** para publicar, editar e deletar avisos e acessar o painel da diretoria.  
 > Entre com uma conta **user** para ver que o menu admin não aparece e o acesso ao `/admin-data` é bloqueado.
